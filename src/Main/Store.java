@@ -1,27 +1,31 @@
 package Main;
 
 import java.util.Scanner;
+import java.util.Random;
 
 public class Store {
 
     public static void main(String[] args) {
 
         Scanner kb = new Scanner(System.in);
+        Random r = new Random();
 
-        Item apple = new Item(0.99, 5.4);
-        apple.addPrice(0.99);
+        System.out.println("Name your new item (do NOT put an s at the end): ");
+        Item item = new Item(kb.next(), 0.99, 5.4);
 
-        System.out.println("Apples are: $" + apple.getPrice());
+        item.addPrice(0.99);
 
-        System.out.println("How much do apples weigh?");
-        apple.addWeight(kb.nextDouble());
+        System.out.println(item.getName() + "s are: $" + item.getPrice());
 
-        System.out.println("Apples weigh " + apple.getWeight() + " oz on average.");
+        System.out.println("How much do " + item.getName() + "s weigh?");
+        item.addWeight(kb.nextDouble());
 
-        System.out.println("Apples cost $" + apple.getPricePerOZ() + " per oz.");
+        System.out.println(item.getName() + "s weigh " + item.getWeight() + " oz on average.");
+
+        System.out.println(item.getName() + " cost $" + item.getPricePerOZ() + " per oz.");
+
+        //using a method from another object works!
+        System.out.println("rounding here: " + item.round(1.99, 0));
 
     }
-
-
-
 }

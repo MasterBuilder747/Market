@@ -1,21 +1,41 @@
 package Main;
 
+import java.util.Random;
+
 class Item {
 
+    private String name; //name of the item
     private double price; //in US dollars ($)
     private double weight; //in ounces (oz)
 
-    Item() {
+    //specific ID for the item, as names are harder to handle internally
+    //this is a random int, 0 to 1,000,000 at most
+    Random r = new Random();
+    final int ID = Math.abs(r.nextInt(1000000));
+
+    Item(String n) {
         //can optionally have no attributes when initializing
+        //name is required
+        name = n;
     }
 
-    Item(double p) {
+    Item(String n, double p) {
+        name = n;
         price = p;
     }
 
-    Item(double p, double w) {
+    Item(String n, double p, double w) {
+        name = n;
         price = p;
         weight = w;
+    }
+
+    int getID() {
+        return ID;
+    }
+
+    String getName() {
+        return name;
     }
 
     void addPrice(double p) {
@@ -50,7 +70,7 @@ class Item {
     //however, this can only be in each class, not in the main method (needs more work here)
     //TODO: find a way to remove the .0 off of integer double values, cannot output a different data value
     //also strings are annoying to handle
-    public static double round(double i, int p) {
+    public double round(double i, int p) {
         //multiply by places, cast to int, divide by places
         //i = input, p = decimal places, 0 or larger
 
