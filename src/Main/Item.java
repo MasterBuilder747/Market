@@ -5,7 +5,7 @@ import java.util.Random;
 class Item {
 
     private String name; //name of the item
-    private double price; //in US dollars ($)
+    private double price; //in US dollars ($), .00 format
     private double weight; //in ounces (oz)
 
     //specific ID for the item, as names are harder to handle internally
@@ -30,30 +30,19 @@ class Item {
         weight = w;
     }
 
+    //getters
     int getID() {
         return ID;
     }
-
     String getName() {
         return name;
     }
-
-    void addPrice(double p) {
-        price = p;
-    }
-
     double getPrice() {
         return price;
     }
-
-    void addWeight(double w) {
-        weight = w;
-    }
-
     double getWeight() {
         return round(weight, 3);
     }
-
     double getPricePerOZ() {
         if (price != 0) {
             if (weight != 0) {
@@ -66,11 +55,22 @@ class Item {
         }
     }
 
+    //setters
+    void setPrice(double p) {
+        price = p;
+    }
+    void setWeight(double w) {
+        weight = w;
+    }
+    void setName(String n) {
+        name = n;
+    }
+
     //implement my own rounding method for reusability
     //however, this can only be in each class, not in the main method (needs more work here)
     //TODO: find a way to remove the .0 off of integer double values, cannot output a different data value
     //also strings are annoying to handle
-    public double round(double i, int p) {
+    double round(double i, int p) {
         //multiply by places, cast to int, divide by places
         //i = input, p = decimal places, 0 or larger
 
@@ -81,7 +81,7 @@ class Item {
                 places = places * 10;
             }
         }
-
+        
         return ((int)((i * places) + 0.5)) / places;
     }
 }

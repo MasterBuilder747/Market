@@ -12,13 +12,13 @@ public class Store {
 
         System.out.println("Name your new item (do NOT put an s at the end): ");
         Item item = new Item(kb.next(), 0.99, 5.4);
-
-        item.addPrice(0.99);
+        System.out.println("Set the price of the item: ");
+        item.setPrice(kb.nextDouble());
 
         System.out.println(item.getName() + "s are: $" + item.getPrice());
 
         System.out.println("How much do " + item.getName() + "s weigh?");
-        item.addWeight(kb.nextDouble());
+        item.setWeight(kb.nextDouble());
 
         System.out.println(item.getName() + "s weigh " + item.getWeight() + " oz on average.");
 
